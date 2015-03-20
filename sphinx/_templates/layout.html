@@ -1,0 +1,30 @@
+{% extends "!layout.html" %}
+
+
+{% block rootrellink %}
+        <li><a href="{{ pathto('index') }}"><font color="#EE9816">Contents</font></a>|&nbsp;</li>
+        <li><a href="{{ pathto('biblio') }}"><font color="#EE9816">Bibliography</font></a>|&nbsp;</li>
+        <li><a href="{{ pathto('about') }}"><font color="#EE9816">About</font></a>|&nbsp;</li>
+{% endblock %}
+
+
+{% block relbar1 %}
+
+<div style="background-color: #11557C; text-align: left; padding: 10px 10px 15px 15px">
+<table>
+<tr>
+<td>
+  <font size=5 color="white"> <b>Geophysical Computing Notebook</b></font>
+<br>&nbsp;<br>
+  <font size=4 color="white"> Joseph Jennings</font>
+</td>
+</tr>
+</table>
+</div>
+{{ super() }}
+{% endblock %}
+
+{# put the sidebar before the body #}
+{% block sidebar1 %}{{ sidebar() }}{% endblock %}
+{% block sidebar2 %}{% endblock %}
+
