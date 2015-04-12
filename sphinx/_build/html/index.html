@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to Joseph Jennings website! &mdash; Joseph Jennings Website 1.0 documentation</title>
+    <title>Structure-oriented smoothing of 2D &amp; 3D images on the GPU &mdash; Joseph Jennings Website 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,13 +27,14 @@
     <link rel="top" title="Joseph Jennings Website 1.0 documentation" href="#" /> 
   </head>
   <body>
+
 <div style="background-color: #11557C; text-align: left; padding: 10px 10px 15px 15px">
 <table>
 <tr>
 <td>
   <font size=5 color="white"> <b>Geophysical Computing Notebook</b></font>
 <br>&nbsp;<br>
-<font size=4 color="white"> Joseph Jennings</font>
+  <font size=4 color="white"> Joseph Jennings</font>
 </td>
 </tr>
 </table>
@@ -45,22 +46,22 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="2013/index.html" title="2013 versions of some files"
-             accesskey="N">next</a> |</li>
         <li><a href="#"><font color="#EE9816">Contents</font></a>|&nbsp;</li>
-        <li><a href="biblio.html"><font color="#EE8916">Bibliography</font></a>|&nbsp;</li>
+        <li><a href="biblio.html"><font color="#EE9816">Bibliography</font></a>|&nbsp;</li>
         <li><a href="about.html"><font color="#EE9816">About</font></a>|&nbsp;</li>
  
       </ul>
-
     </div>
+
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Welcome to Joseph Jennings website!</a><ul>
-<li><a class="reference internal" href="#hello">Hello!</a></li>
+<li><a class="reference internal" href="#">Structure-oriented smoothing of 2D &amp; 3D images on the GPU</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#structure-oriented-smoothing">Structure-oriented smoothing</a></li>
+<li><a class="reference internal" href="#gpu-implementation">GPU Implementation</a></li>
 </ul>
 </li>
 </ul>
@@ -91,30 +92,58 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="welcome-to-joseph-jennings-website">
-<h1>Welcome to Joseph Jennings website!<a class="headerlink" href="#welcome-to-joseph-jennings-website" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="structure-oriented-smoothing-of-2d-3d-images-on-the-gpu">
+<h1>Structure-oriented smoothing of 2D &amp; 3D images on the GPU<a class="headerlink" href="#structure-oriented-smoothing-of-2d-3d-images-on-the-gpu" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul class="simple">
 </ul>
 </div>
-<div class="section" id="hello">
-<h2>Hello!<a class="headerlink" href="#hello" title="Permalink to this headline">¶</a></h2>
-<p>My name is Joseph Jennings. I am really interested in using sphinx for a website.
-While it is designed to be used for python documentation, I think it will work very nicely for
-a &#8220;notebook&#8221; if you will, on which I can post explanations of the code I commit to my
-<a class="reference external" href="https://github.com/ke0m/">GitHub repository</a></p>
-<p>I plan to post the following things on my website:</p>
-<ol class="arabic">
-<li><p class="first">Post figures, mathematics and other explanations associated with the code on my GitHub
-repository. Some of the projects I would like to post are:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Structure-oriented smoothing of 2D images on the GPU</li>
-<li>The solved problems from my coursera course</li>
-</ul>
-</div></blockquote>
-</li>
-</ol>
+<p><em>March 20, 2015</em></p>
+<p>This page describes the code I wrote for my undergraduate thesis while in my final year as an undergraduate
+at Colorado School of Mines. The code is found in two different git repositories
+on <a href="https://github.com/ke0m" target="_blank">my GitHub page</a>. The final working code and demo
+is found within my fork of the Mines Java Tool Kit created by <a href="https://inside.mines.edu/~dhale/" target="_blank">Professor Dave Hale</a> (my advisor for this
+project). This is the <cite>jtk</cite> repository and  my test and other code is found within the
+<cite>Senior_Design</cite> repository.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The instructions for installing the working code and demo
+can be found in the README file on this <a href="https://github.com/ke0m/jtk#structure-oriented-smoothing-of-2d-images-on-the-gpu" target="_blank">web page</a>.</p>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Geoscientists use seismic images to better understand the subsurface geology of a given region. The proper
+interpretation of these images is key in creating an accurate geologic model to make predictions on the location
+of hydrocarbon reservoirs. This interpretation can be time-consuming and a major bottleneck in the process of
+creating geologic models <a class="reference internal" href="biblio.html#fehmers-hocker" id="id1">[Fehmers-Hocker]</a>.
+Applying image processing algorithms can aid in speeding up this interpretation as they
+can remove unwanted noise and help delineate subtle yet important geologic features. One of these algorithms is
+known as structure-oriented smoothing <a class="reference internal" href="biblio.html#fehmers-hocker" id="id2">[Fehmers-Hocker]</a>. The application of this filter to a seismic image will smooth
+along the geologic structure in the image rather than across it in order to enhance the structural features. By clicking Figure 1
+below, you can see the results of structure-oriented smoothing of a 2D seismic image.</p>
+<div style="text-align: center;">
+<img id="sos_click" onclick="changeImage()"
+src="_images/input.png" width="60%" height="60%">
+</div>
+
+<p style="text-align: center"><b>Figure 1:</b> Click the figure above to toggle between the input and smoothed image.</p>
+
+<script>
+function changeImage() {
+  var image = document.getElementById("sos_click");
+  if(image.src.match("smoothed")) {
+    image.src = "_images/input.png";
+  }
+  else {
+    image.src = "_images/smoothed.png"
+  }
+}
+</script></div>
+<div class="section" id="structure-oriented-smoothing">
+<h2>Structure-oriented smoothing<a class="headerlink" href="#structure-oriented-smoothing" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gpu-implementation">
+<h2>GPU Implementation<a class="headerlink" href="#gpu-implementation" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -129,12 +158,9 @@ repository. Some of the projects I would like to post are:</p>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="2013/index.html" title="2013 versions of some files"
-             accesskey="N">next</a> |</li>
+             >index</a></li>
         <li><a href="#"><font color="#EE9816">Contents</font></a>|&nbsp;</li>
-        <li><a href="biblio.html"><font color="#EE8916">Bibliography</font></a>|&nbsp;</li>
+        <li><a href="biblio.html"><font color="#EE9816">Bibliography</font></a>|&nbsp;</li>
         <li><a href="about.html"><font color="#EE9816">About</font></a>|&nbsp;</li>
  
       </ul>

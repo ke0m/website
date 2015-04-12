@@ -35,7 +35,7 @@ can be found in the README file on this |webpage|.
 
 .. |webpage| raw:: html
 
-   <a href="https://github.com/ke0m/jtk" target="_blank">web page</a>
+   <a href="https://github.com/ke0m/jtk#structure-oriented-smoothing-of-2d-images-on-the-gpu" target="_blank">web page</a>
 
 Introduction
 ------------
@@ -47,13 +47,29 @@ creating geologic models [Fehmers-Hocker]_.
 Applying image processing algorithms can aid in speeding up this interpretation as they
 can remove unwanted noise and help delineate subtle yet important geologic features. One of these algorithms is 
 known as structure-oriented smoothing [Fehmers-Hocker]_. The application of this filter to a seismic image will smooth
-along the geologic structure in the image rather than across it in order to enhance the structural features. In Figure 1 
-below, this can be seen in action on a 2D seismic image.
+along the geologic structure in the image rather than across it in order to enhance the structural features. By clicking Figure 1 
+below, you can see the results of structure-oriented smoothing of a 2D seismic image.
 
-(Insert animated GIF here)
+.. raw:: html
 
+  <div style="text-align: center;">
+  <img id="sos_click" onclick="changeImage()"
+  src="_images/input.png" width="60%" height="60%">
+  </div>
 
+  <p style="text-align: center"><b>Figure 1:</b> Click the figure above to toggle between the input and smoothed image.</p>
 
+  <script>
+  function changeImage() {
+    var image = document.getElementById("sos_click");
+    if(image.src.match("smoothed")) {
+      image.src = "_images/input.png";
+    }
+    else {
+      image.src = "_images/smoothed.png"
+    }
+  }
+  </script>
 
 
 Structure-oriented smoothing
