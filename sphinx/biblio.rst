@@ -13,5 +13,5 @@ Structure-oriented smoothing on the GPU references
 
 .. [Weickert] J. Weickert, *Anisotropic Diffusion  in Image Processing*, 1998 ... `<http://www.mia.uni-saarland.de/weickert/Papers/book.pdf>`_
 
-.. [Hale] D. Hale, *Structure-oriented smoothing and semblance*, 
+.. [Hale] D. Hale, *Structure-oriented smoothing and semblance*, CWP Report 635 ... `<http://inside.mines.edu/~dhale/papers/Hale09StructureOrientedSmoothingAndSemblance.pdf>`_
 
