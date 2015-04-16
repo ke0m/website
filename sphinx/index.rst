@@ -75,7 +75,14 @@ below, you can see the results of structure-oriented smoothing of a 2D seismic i
 Structure-oriented smoothing
 ----------------------------
 
+The underlying algorithm that performs this adaptive smoothing is known as anisotropic diffusion filtering and has been used 
+extensively in image processing applications [Weickert]_.  By solving the anisotropic diffusion equation using the input seismic
+image as an initial condition, we simulate the anistropic diffusion process which diffuses the seismic amplitudes of the input image
+[Fehmers-Hocker]_. This diffusion is guided along the structure present in the image by computed structure tensors that serve as 
+input parameters in the anisotropic diffusion process. [Hale]_, describes an implementation of this algorithm by implicitly solving
+a modified version of the diffusion equation via conjugate gradient iterations.
 
-GPU Implementation
+
+GP Implementation
 ------------------
 
